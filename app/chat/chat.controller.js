@@ -5,10 +5,10 @@
         .module('plane-chat')
         .controller('ChatController', ChatController);
 
-    ChatController.$inject = ['$scope', '$log', 'localstorageService'];
+    ChatController.$inject = ['localstorageService', 'socketService'];
 
     /* @ngInject */
-    function ChatController($scope, $log, localstorageService) {
+    function ChatController(localstorageService, socketService) {
         var vm = this;
         vm.newMessage = '';
         vm.messages = localstorageService.get('messages');
@@ -17,19 +17,28 @@
         vm.clearChat = clearChat;
         vm.textareaOnKeypress = textareaOnKeypress;
 
-
         activate();
 
         ////////////////
 
-        function activate() {}
+        function activate() {
+            socketService.on('messages', function (message) {
+                addMsg(message);
+            });
+        }
 
-        function addMsg() {
-            if (vm.newMessage.trim()) {
+        function addMsg(message) {
+            var isFromSocket = angular.isDefined(message);
+
+            if (isFromSocket) {
+                vm.messages.push(message);
+            } else if (vm.newMessage.trim()) {
                 vm.messages.push(vm.newMessage.trim());
-                localstorageService.set(vm.messages);
+                socketService.emit('messages', vm.newMessage.trim());
+                vm.newMessage = '';
             }
-            vm.newMessage = '';
+
+            localstorageService.set(vm.messages);
         }
 
         function textareaOnKeypress(e) {

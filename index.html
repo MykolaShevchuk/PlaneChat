@@ -12,9 +12,14 @@
 
 <div ng-include="'app/chat/chat.html'"></div>
 
+<!-- Vendors JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+<!-- App JS -->
 <script src="app/app.module.js"></script>
 <script src="app/services/localstorage.service.js"></script>
+<script src="app/services/socket.service.js"></script>
 <script src="app/chat/chat.controller.js"></script>
 <script src="app/components/focus-on-input.directive.js"></script>
 <script src="app/components/scroll-to-bottom.directive.js"></script>
