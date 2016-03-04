@@ -1,0 +1,20 @@
+<div id="chat-app" class="chat-app" ng-controller="ChatController as vm">
+  <header>
+    <div class="logo">
+      <span class="glyphicon glyphicon-plane"></span>
+      <span class="title">PlaneChat</span>
+    </div>
+    <a href="" class="clear-chat" ng-click="vm.clearChat()">
+      <span class="glyphicon glyphicon-trash"></span>
+    </a>
+  </header>
+  <div class="msg-list">
+    <div class="msg-item" ng-repeat="message in vm.messages track by $index" scroll-to-bottom>{{message}}</div>
+  </div>
+  <footer focus-on-input>
+    <input class="msg-text form-control" ng-model="vm.newMessage"
+           ng-keypress="vm.textareaOnKeypress($event)">
+    </input>
+    <button class="add-msg btn btn btn-success" ng-click="vm.addMsg()">Send</button>
+  </footer>
+</div>

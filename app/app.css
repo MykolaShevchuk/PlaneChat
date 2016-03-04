@@ -1,0 +1,128 @@
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+/* HEADER */
+.chat-app header {
+    position: fixed;
+    top: 0;
+    height: 70px;
+    padding: 15px;
+    width: 100%;
+    background-color: #4D394B;
+    z-index: 1;
+}
+
+.chat-app header .logo {
+    display: flex;
+    width: 200px;
+    float: left;
+    cursor: default;
+}
+
+.chat-app header .logo .title {
+    margin-left: 15px;
+    font-size: 26px;
+    color: #fff;
+}
+
+.chat-app header .logo .glyphicon-plane {
+    min-width: 36px;
+    font-size: 36px;
+    color: #7CB315;
+}
+
+.chat-app header .logo:hover .glyphicon-plane {
+    animation: plane 2500ms linear forwards;
+    position: relative;
+    color: #B428E2;
+}
+
+.chat-app header .clear-chat {
+    float: right;
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    margin-top: 3px;
+}
+
+.chat-app header .clear-chat:hover {
+    animation: shake 500ms linear;
+}
+
+/* Messages List */
+.chat-app .msg-list {
+    padding: 80px 15px 100px 15px;
+}
+
+.chat-app .msg-list .msg-item {
+    padding: 15px;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+    animation: new-item-animation .2s linear forwards;
+}
+
+/* FOOTER */
+.chat-app footer {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    padding: 15px 0;
+    background-color: #4D394B;
+}
+
+.chat-app footer .msg-text {
+    width: 100%;
+    margin: 0 15px;
+    resize: none;
+}
+
+.chat-app footer .add-msg {
+    width: 120px;
+    margin: 0 15px 0 0;
+}
+
+/* Animation */
+@keyframes shake {
+    40% {
+        transform: rotate(15deg);
+    }
+    80% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@keyframes new-item-animation {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes plane {
+    20% {
+        transform: rotate(90deg);
+
+    }
+    30% {
+        transform: rotate(90deg);
+
+    }
+    65% {
+        transform: translate(400px, 0px) rotate(90deg);
+
+    }
+    100% {
+        transform: translate(600px, -200px) rotate(30deg);
+
+    }
+}
