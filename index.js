@@ -1,9 +1,10 @@
+var port = process.env.PORT || 3000;
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-server.listen(443);
+server.listen(port);
 
 app.use('/app', express.static('app'));
 
